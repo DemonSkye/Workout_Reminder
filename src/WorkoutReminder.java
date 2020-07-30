@@ -39,7 +39,7 @@ public class WorkoutReminder {
                 TrayIcon trayIcon = new TrayIcon(logo, "Workout you fat slob");
                 trayIcon.setImageAutoSize(true);
                 String iconText = "Workout reminder";
-                String workoutText = "Let's get it: " + workout + " for " + rep + "reps";
+                String workoutText = "Let's get it: " + workout + " for " + rep + " reps";
                 trayIcon.setToolTip("YEEEET");
                 st.add(trayIcon);
                 trayIcon.displayMessage(workoutText, iconText, TrayIcon.MessageType.INFO);
