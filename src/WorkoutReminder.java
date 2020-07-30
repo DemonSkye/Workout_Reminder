@@ -11,9 +11,6 @@ public class WorkoutReminder {
     static final int reps[] = {
             10,14,15,17,20
     };
-    static final int sets[] = {
-            3, 5, 7
-    };
     public static void main(String args[])throws AWTException, InterruptedException{
         if(SystemTray.isSupported()) {
             WorkoutReminder wr = new WorkoutReminder();
@@ -36,14 +33,13 @@ public class WorkoutReminder {
                 Random rand = new Random();
                 String workout = workouts[Math.abs(rand.nextInt() % workouts.length)];
                 int rep = reps[Math.abs(rand.nextInt() % reps.length)];
-                int set = sets[Math.abs(rand.nextInt() % sets.length)];
 
                 SystemTray st = SystemTray.getSystemTray();
                 Image logo = Toolkit.getDefaultToolkit().createImage("image.png");
                 TrayIcon trayIcon = new TrayIcon(logo, "Workout you fat slob");
                 trayIcon.setImageAutoSize(true);
                 String iconText = "Workout reminder";
-                String workoutText = "Let's get it: " + workout + " for " + set + " sets of " + rep;
+                String workoutText = "Let's get it: " + workout + " for " + rep + "reps";
                 trayIcon.setToolTip("YEEEET");
                 st.add(trayIcon);
                 trayIcon.displayMessage(workoutText, iconText, TrayIcon.MessageType.INFO);
