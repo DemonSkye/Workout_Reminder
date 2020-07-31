@@ -28,8 +28,8 @@ public class WorkoutReminder {
             LocalDateTime currentTime = LocalDateTime.now();
             String min = dtfm.format(currentTime);
             int hour = Integer.parseInt(dtfh.format(currentTime));
-            System.out.println(min);
-            if(min.equals("00") && ( hour >=9 && hour < 21)) {
+            System.out.print(min);
+            if(min.equals("00") && ( hour >=9 && hour <= 21)) {
                 Random rand = new Random();
                 String workout = workouts[Math.abs(rand.nextInt() % workouts.length)];
                 int rep = reps[Math.abs(rand.nextInt() % reps.length)];
@@ -39,13 +39,15 @@ public class WorkoutReminder {
                 TrayIcon trayIcon = new TrayIcon(logo, "Workout you fat slob");
                 trayIcon.setImageAutoSize(true);
                 String iconText = "Workout reminder";
-                String workoutText = "Let's get it: " + workout + " for " + rep + " reps";
+                String workoutText = "Let's get it: " + workout + " for " + rep + " reps\n";
+                System.out.print("  --" + workoutText);
                 trayIcon.setToolTip("YEEEET");
                 st.add(trayIcon);
                 trayIcon.displayMessage(workoutText, iconText, TrayIcon.MessageType.INFO);
                 Thread.sleep(60000);
             }
             else{
+                System.out.print(" - " + (60-Integer.parseInt(min)) + " minutes left\n");
                 Thread.sleep(60000);
             }
         }
